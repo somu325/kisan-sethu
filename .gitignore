@@ -22,6 +22,9 @@ secrets/
 backend/data/rag_docs/*.pdf
 backend/data/*.sqlite
 backend/data/chroma/
+server/data/
+*.db
+*.sqlite3
 *.log
 uploads/
 tmp/
