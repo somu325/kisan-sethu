@@ -10,7 +10,8 @@ export type NavigationTab =
   | 'soildoctor'
   | 'schemes'
   | 'storage'
-  | 'charts';
+  | 'charts'
+  | 'markets';
 
 export type LocationOption = {
   id: string;

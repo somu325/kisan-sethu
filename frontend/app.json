@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Kisan Setu",
+    "slug": "kisan-sethu",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./public/brinjal.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#2D5A27"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kisansethu.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Kisan Setu uses your location to show accurate local mandi prices, nearby market yards, and weather-aware crop advice."
+      }
+    },
+    "android": {
+      "package": "com.kisansethu.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#2D5A27"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    }
+  }
+}

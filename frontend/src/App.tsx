@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import {
   View,
   Text,
@@ -14,7 +14,6 @@ import {
   AGRICULTURAL_LOCATIONS,
   getLocationAdaptedMandi,
   getNearestColdStorage,
-  getNearestLocationFromCoords,
   getLanguageForLocation
 } from './data/mockData';
 import { translations } from './data/i18n';
@@ -28,13 +27,14 @@ import { CropDoctorView } from './components/CropDoctorView';
 import { PesticideDosageView } from './components/PesticideDosageView';
 import { SoilDoctorView } from './components/SoilDoctorView';
 import { SchemesSection } from './components/SchemesSection';
-import { ColdStorageMapView } from './components/ColdStorageMapView';
+import { NearbyMarketsScreen } from './components/markets/NearbyMarketsScreen';
 import { EducationalChartsView } from './components/EducationalChartsView';
 import { AiVoiceAssistantModal } from './components/AiVoiceAssistantModal';
 import { PriceAlertModal } from './components/PriceAlertModal';
 import { LoginModal } from './components/LoginModal';
 import { LocationModal } from './components/LocationModal';
 import { MobileBottomNav } from './components/MobileBottomNav';
+import { useUserLocation } from './hooks/useUserLocation';
 import {
   Stethoscope,
   Landmark,
@@ -48,18 +48,6 @@ import {
 } from 'lucide-react';
 
 export function App() {
-  // Initialize Location: Check localStorage first, otherwise default to AGRICULTURAL_LOCATIONS[0]
-  const [currentLocation, setCurrentLocation] = useState<LocationOption>(() => {
-    if (typeof window !== 'undefined') {
-      const savedLocId = localStorage.getItem('ks_user_location_id');
-      if (savedLocId) {
-        const found = AGRICULTURAL_LOCATIONS.find((loc) => loc.id === savedLocId);
-        if (found) return found;
-      }
-    }
-    return AGRICULTURAL_LOCATIONS[0];
-  });
-
   // Initialize Language: Check localStorage first, otherwise match regional language of location (Telugu for AP/Telangana)
   const [currentLang, setCurrentLang] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
@@ -76,35 +64,6 @@ export function App() {
     return getLanguageForLocation(AGRICULTURAL_LOCATIONS[0]);
   });
 
-  // Automatically detect user's Geo location and configure location & regional language
-  useEffect(() => {
-    if (typeof window === 'undefined' || !('geolocation' in navigator)) return;
-
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const { latitude, longitude } = pos.coords;
-        const nearest = getNearestLocationFromCoords(latitude, longitude);
-        const geoLang = getLanguageForLocation(nearest);
-
-        const hasManualLoc = localStorage.getItem('ks_loc_manual') === 'true';
-        if (!hasManualLoc) {
-          setCurrentLocation(nearest);
-          localStorage.setItem('ks_user_location_id', nearest.id);
-        }
-
-        const hasManualLang = localStorage.getItem('ks_lang_manual') === 'true';
-        if (!hasManualLang) {
-          setCurrentLang(geoLang);
-          localStorage.setItem('ks_user_lang', geoLang);
-        }
-      },
-      (err) => {
-        console.log('Browser geolocation:', err.message);
-      },
-      { enableHighAccuracy: false, timeout: 6000, maximumAge: 300000 }
-    );
-  }, []);
-
   const handleLanguageChange = (lang: Language) => {
     setCurrentLang(lang);
     if (typeof window !== 'undefined') {
@@ -113,11 +72,26 @@ export function App() {
     }
   };
 
-  const handleLocationChange = (loc: LocationOption) => {
-    setCurrentLocation(loc);
+  const handleLanguageAutoSync = useCallback((geoLang: Language) => {
+    setCurrentLang(geoLang);
     if (typeof window !== 'undefined') {
-      localStorage.setItem('ks_user_location_id', loc.id);
-      localStorage.setItem('ks_loc_manual', 'true');
+      localStorage.setItem('ks_user_lang', geoLang);
+    }
+  }, []);
+
+  // GPS-First Location Management with Persistence, 10-minute refresh, and manual override
+  const {
+    currentLocation,
+    locationMode,
+    locationStatus,
+    recentLocations,
+    selectManualLocation,
+    switchToGpsMode
+  } = useUserLocation(currentLang, handleLanguageAutoSync);
+
+  const handleLocationChange = (loc: LocationOption) => {
+    selectManualLocation(loc);
+    if (typeof window !== 'undefined') {
       const hasManualLang = localStorage.getItem('ks_lang_manual') === 'true';
       if (!hasManualLang) {
         const geoLang = getLanguageForLocation(loc);
@@ -205,6 +179,8 @@ export function App() {
           currentLocation={currentLocation}
           onOpenLocationModal={() => setIsLocationModalOpen(true)}
           onSelectLocation={handleLocationChange}
+          locationStatus={locationStatus}
+          locationMode={locationMode}
         />
 
         {/* Server Data Sync Notice */}
@@ -466,14 +442,11 @@ export function App() {
               />
             )}
 
-            {/* TAB 10: Cold Storage */}
-            {activeTab === 'storage' && (
-              <ColdStorageMapView
+            {/* Nearby Markets (APMC Yards & Mandis on OpenStreetMap) */}
+            {(activeTab === 'markets' || activeTab === 'storage') && (
+              <NearbyMarketsScreen
                 currentLang={currentLang}
-                onOpenHelpline={handleOpenHelpline}
-                onOpenBookingGate={handleOpenLogin}
                 currentLocation={currentLocation}
-                onSelectLocation={handleLocationChange}
               />
             )}
           </ScrollView>
@@ -512,6 +485,15 @@ export function App() {
           activeMandi={activeMandi}
           isAiModeEnabled={isAiModeEnabled}
           onToggleAiMode={setIsAiModeEnabled}
+          currentLocation={currentLocation}
+          onNavigateToMarket={(_marketId) => {
+            setActiveTab('markets');
+            setIsAiModalOpen(false);
+          }}
+          onOpenLocationModal={() => {
+            setIsAiModalOpen(false);
+            setIsLocationModalOpen(true);
+          }}
         />
 
         <PriceAlertModal
@@ -536,6 +518,10 @@ export function App() {
           currentLocation={currentLocation}
           onSelectLocation={handleLocationChange}
           currentLang={currentLang}
+          locationMode={locationMode}
+          locationStatus={locationStatus}
+          recentLocations={recentLocations}
+          onUseGpsLocation={switchToGpsMode}
         />
       </View>
     </SafeAreaView>

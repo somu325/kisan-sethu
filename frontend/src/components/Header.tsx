@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView } from 
 import type { Language, LocationOption } from '../types';
 import { translations } from '../data/i18n';
 import { CROP_CHIPS, AGRICULTURAL_LOCATIONS } from '../data/mockData';
-import { Search, Mic, Globe, User, MapPin, Sparkles, ChevronDown, Check, Building2 } from 'lucide-react';
+import { Search, Mic, Globe, User, MapPin, Sparkles, ChevronDown, Check, Building2, LocateFixed, LocateOff, Loader2 } from 'lucide-react';
+import type { LocationMode, LocationStatus } from '../hooks/useUserLocation';
 
 interface HeaderProps {
   currentLang: Language;
@@ -20,6 +21,8 @@ interface HeaderProps {
   currentLocation: LocationOption;
   onOpenLocationModal: () => void;
   onSelectLocation?: (loc: LocationOption) => void;
+  locationStatus?: LocationStatus;
+  locationMode?: LocationMode;
 }
 
 export const Header: FC<HeaderProps> = ({
@@ -36,7 +39,9 @@ export const Header: FC<HeaderProps> = ({
   userName,
   currentLocation,
   onOpenLocationModal,
-  onSelectLocation
+  onSelectLocation,
+  locationStatus = 'gps',
+  locationMode = 'gps'
 }) => {
   const t = translations[currentLang];
   const [isListening, setIsListening] = useState(false);
@@ -214,26 +219,60 @@ export const Header: FC<HeaderProps> = ({
 
         {/* Actions Wrap: Location, Language, AI Mode, and Login */}
         <View style={styles.actionsWrap}>
-          {/* Location Dropdown */}
+          {/* Location Chip */}
           <View ref={locationDropdownRef} style={styles.dropdownContainer}>
             <TouchableOpacity
               onPress={() => {
-                setShowLocationDropdown((prev) => !prev);
+                onOpenLocationModal();
                 setShowLanguageDropdown(false);
               }}
-              style={[styles.locationBtn, showLocationDropdown && styles.dropdownBtnActive]}
+              style={styles.locationBtn}
               activeOpacity={0.7}
               accessibilityLabel={t.selectLocationTitle}
+              accessibilityHint={
+                locationStatus === 'gps'
+                  ? t.gpsAutoModeActive || 'Auto GPS Mode Active'
+                  : locationStatus === 'denied' || locationStatus === 'error'
+                  ? t.permissionDeniedNotice || 'Location permission denied'
+                  : t.manualLocationMode || 'Manual Location'
+              }
+              {...({
+                title:
+                  locationStatus === 'gps'
+                    ? t.gpsAutoModeActive || 'Auto GPS Mode Active'
+                    : locationStatus === 'denied' || locationStatus === 'error'
+                    ? t.permissionDeniedNotice || 'Location permission denied'
+                    : t.manualLocationMode || 'Manual Location'
+              } as any)}
             >
-              <MapPin size={14} color="#2D5A27" />
-              <Text style={styles.locName}>{currentLocation.name[currentLang]}</Text>
+              {locationStatus === 'detecting' ? (
+                <Loader2
+                  size={14}
+                  color="#2D5A27"
+                  className="spin-icon"
+                  style={{ animation: 'spin 1s linear infinite' } as any}
+                />
+              ) : locationStatus === 'denied' || locationStatus === 'error' ? (
+                <LocateOff size={14} color="#94A3B8" />
+              ) : locationStatus === 'gps' || (locationMode === 'gps' && locationStatus !== 'manual') ? (
+                <LocateFixed size={14} color="#2D5A27" />
+              ) : (
+                <MapPin size={14} color="#2D5A27" />
+              )}
+
+              <Text style={styles.locName} numberOfLines={1}>
+                {locationStatus === 'detecting'
+                  ? t.detectingLocation || 'Detecting...'
+                  : currentLocation.name[currentLang]}
+              </Text>
+
               <ChevronDown
                 size={13}
-                color="#2D5A27"
-                style={{
-                  transform: showLocationDropdown ? 'rotate(180deg)' : 'none',
-                  transition: 'transform 0.2s ease'
-                }}
+                color={
+                  locationStatus === 'denied' || locationStatus === 'error'
+                    ? '#94A3B8'
+                    : '#2D5A27'
+                }
               />
             </TouchableOpacity>
 
@@ -625,6 +664,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '700',
     color: '#1E293B',
+    maxWidth: 130,
   },
   locChange: {
     fontSize: 10,

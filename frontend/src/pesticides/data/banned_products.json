@@ -1,0 +1,33 @@
+{
+  "notice": "SAMPLE CIB&RC BANNED AND RESTRICTED PESTICIDE DATASET - FOR PRODUCTION, SYNC REGULARLY WITH OFFICIAL PPQS/CIB&RC GAZETTE NOTIFICATIONS (http://cibrc.gov.in/list_pest_banned.htm)",
+  "last_updated": "2024-11-01",
+  "banned_active_ingredients": [
+    "endosulfan",
+    "monocrotophos",
+    "phorate",
+    "methyl parathion",
+    "ddt",
+    "aldrin",
+    "dieldrin",
+    "chlordane",
+    "heptachlor",
+    "phosphamidon",
+    "methomyl",
+    "lindane",
+    "sodium cyanide",
+    "paraquat dichloride",
+    "carbofuran"
+  ],
+  "restricted_use_rules": [
+    {
+      "active_ingredient": "monocrotophos",
+      "banned_on_crops": ["vegetables", "tomato", "chilli", "brinjal", "cabbage", "cauliflower", "okra", "potato"],
+      "reason": "CIB&RC notification: prohibited on vegetables due to acute toxicity and residues."
+    },
+    {
+      "active_ingredient": "chlorpyrifos",
+      "banned_on_crops": ["green leafy vegetables", "ber", "grapes"],
+      "reason": "Restricted label claim per PPQS directive."
+    }
+  ]
+}

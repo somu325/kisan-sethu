@@ -36,10 +36,10 @@ if (target === 'dev') {
   const viteBin = path.join(__dirname, 'node_modules', 'vite', 'bin', 'vite.js');
   child = spawn(nodeExecutable, [viteBin, 'preview', ...extraArgs], { stdio: 'inherit', env });
 } else if (target === 'test') {
-  child = spawn(nodeExecutable, ['--experimental-strip-types', '--test', 'src/tests/farmerLogic.test.ts', ...extraArgs], { stdio: 'inherit', env });
+  child = spawn(nodeExecutable, ['--experimental-strip-types', '--test', 'src/tests/farmerLogic.test.ts', 'src/tests/dosageCalculator.test.ts', 'src/tests/voiceAssistant.test.ts', ...extraArgs], { stdio: 'inherit', env });
 } else {
   const bin = path.join(__dirname, 'node_modules', '.bin', target);
-  child = spawn(bin, extraArgs, { stdio: 'inherit', env, shell: true });
+  child = spawn(`"${bin}"`, extraArgs, { stdio: 'inherit', env, shell: true });
 }
 
 child.on('exit', (code) => {

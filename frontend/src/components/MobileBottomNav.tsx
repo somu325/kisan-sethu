@@ -14,7 +14,8 @@ import {
   Landmark,
   Warehouse,
   BarChart3,
-  X
+  X,
+  MapPin
 } from 'lucide-react';
 
 interface MobileBottomNavProps {
@@ -39,6 +40,11 @@ export const MobileBottomNav: FC<MobileBottomNavProps> = ({
   ];
 
   const moreItems: { id: NavigationTab; label: string; icon: ReactNode }[] = [
+    {
+      id: 'markets',
+      label: currentLang === 'hi' ? 'मंडियां (Map)' : currentLang === 'te' ? 'మార్కెట్లు (Map)' : 'Markets Map',
+      icon: <MapPin size={22} color={activeTab === 'markets' ? '#2D5A27' : '#334155'} />
+    },
     { id: 'charts', label: t.tabCharts.split(' ')[0], icon: <BarChart3 size={22} color={activeTab === 'charts' ? '#2D5A27' : '#334155'} /> },
     { id: 'logistics', label: t.tabLogistics, icon: <Truck size={22} color={activeTab === 'logistics' ? '#2D5A27' : '#334155'} /> },
     { id: 'pesticides', label: t.tabPesticides, icon: <FlaskConical size={22} color={activeTab === 'pesticides' ? '#2D5A27' : '#334155'} /> },

@@ -1,0 +1,112 @@
+{
+  "notice": "SAMPLE CROP & PEST CATALOG - EXPANDABLE AND SYNCED WITH ICAR / ANGRAU GUIDES",
+  "crops": [
+    {
+      "id": "chilli",
+      "name": { "en": "Chilli", "hi": "मिर्च (Chilli)", "te": "మిర్చి (Chilli)" },
+      "icon": "🌶️",
+      "defaultSoil": "red",
+      "stages": ["seedling", "vegetative", "flowering", "fruiting"],
+      "problems": [
+        { "id": "thrips", "name": { "en": "Chilli Thrips", "hi": "थ्रिप्स (Thrips)", "te": "తామర పురుగులు (Thrips)" }, "type": "pest" },
+        { "id": "yellow_mites", "name": { "en": "Yellow Mites", "hi": "पीली मकड़ी (Mites)", "te": "నల్లి / మైట్స్ (Mites)" }, "type": "pest" },
+        { "id": "powdery_mildew", "name": { "en": "Powdery Mildew", "hi": "सफेद चूर्णी फफूंद", "te": "బూడిద తెగులు" }, "type": "disease" },
+        { "id": "fruit_rot", "name": { "en": "Anthracnose / Fruit Rot", "hi": "फल सड़न (Die-back)", "te": "కాయ కుళ్ళు తెగులు" }, "type": "disease" }
+      ]
+    },
+    {
+      "id": "paddy",
+      "name": { "en": "Paddy / Rice", "hi": "धान / चावल (Paddy)", "te": "వరి (Paddy)" },
+      "icon": "🌾",
+      "defaultSoil": "clay",
+      "stages": ["seedling", "vegetative", "flowering", "fruiting"],
+      "problems": [
+        { "id": "stem_borer", "name": { "en": "Yellow Stem Borer", "hi": "तना छेदक (Stem Borer)", "te": "కాండం తొలుచు పురుగు" }, "type": "pest" },
+        { "id": "blast", "name": { "en": "Blast Disease", "hi": "ब्लास्ट / झुलसा (Blast)", "te": "అగ్గి తెగులు (Blast)" }, "type": "disease" },
+        { "id": "leaf_folder", "name": { "en": "Leaf Folder", "hi": "पत्ता लपेटक (Leaf Folder)", "te": "ఆకు చుట్టు పురుగు" }, "type": "pest" },
+        { "id": "bph", "name": { "en": "Brown Plant Hopper (BPH)", "hi": "भूरा माहू (BPH)", "te": "సుడి దోమ (BPH)" }, "type": "pest" }
+      ]
+    },
+    {
+      "id": "cotton",
+      "name": { "en": "Cotton", "hi": "कपास (Cotton)", "te": "ప్రత్తి (Cotton)" },
+      "icon": "☁️",
+      "defaultSoil": "black",
+      "stages": ["seedling", "vegetative", "flowering", "fruiting"],
+      "problems": [
+        { "id": "bollworm", "name": { "en": "Bollworm Complex", "hi": "गुलाबी / अमेरिकन सुंडी", "te": "కాయ తొలుచు పురుగు" }, "type": "pest" },
+        { "id": "whitefly", "name": { "en": "Whitefly", "hi": "सफेद मक्खी (Whitefly)", "te": "తెల్ల దోమ (Whitefly)" }, "type": "pest" },
+        { "id": "jassids", "name": { "en": "Jassids / Leafhopper", "hi": "हरा तेला (Jassids)", "te": "పచ్చ దోమ (Jassids)" }, "type": "pest" }
+      ]
+    },
+    {
+      "id": "tomato",
+      "name": { "en": "Tomato", "hi": "टमाटर (Tomato)", "te": "టమాట (Tomato)" },
+      "icon": "🍅",
+      "defaultSoil": "loamy",
+      "stages": ["seedling", "vegetative", "flowering", "fruiting"],
+      "problems": [
+        { "id": "fruit_borer", "name": { "en": "Fruit Borer", "hi": "फल छेदक (Fruit Borer)", "te": "కాయ తొలుచు పురుగు" }, "type": "pest" },
+        { "id": "early_blight", "name": { "en": "Early Blight", "hi": "अगेती झुलसा (Early Blight)", "te": "ముందస్తు మచ్చ తెగులు" }, "type": "disease" },
+        { "id": "late_blight", "name": { "en": "Late Blight", "hi": "पछेती झुलसा (Late Blight)", "te": "లేట్ బ్లైట్" }, "type": "disease" },
+        { "id": "leaf_curl", "name": { "en": "Leaf Curl Virus", "hi": "पत्ता मरोड़ (Leaf Curl)", "te": "ఆకు ముడత వైరస్" }, "type": "disease" }
+      ]
+    },
+    {
+      "id": "groundnut",
+      "name": { "en": "Groundnut", "hi": "मूंगफली (Groundnut)", "te": "వేరుశనగ (Groundnut)" },
+      "icon": "🥜",
+      "defaultSoil": "sandy",
+      "stages": ["seedling", "vegetative", "flowering", "fruiting"],
+      "problems": [
+        { "id": "tikka_leaf_spot", "name": { "en": "Tikka Leaf Spot", "hi": "टिक्का पत्ती धब्बा", "te": "తిక్కా ఆకుమచ్చ తెగులు" }, "type": "disease" },
+        { "id": "white_grub", "name": { "en": "White Grub", "hi": "सफेद लट (White Grub)", "te": "తెల్ల వేరు పురుగు" }, "type": "pest" }
+      ]
+    },
+    {
+      "id": "maize",
+      "name": { "en": "Maize / Corn", "hi": "मक्का (Maize)", "te": "మొక్కజొన్న (Maize)" },
+      "icon": "🌽",
+      "defaultSoil": "alluvial",
+      "stages": ["seedling", "vegetative", "flowering", "fruiting"],
+      "problems": [
+        { "id": "fall_armyworm", "name": { "en": "Fall Armyworm (FAW)", "hi": "फॉल आर्मीवर्म (FAW)", "te": "కత్తెర పురుగు (FAW)" }, "type": "pest" },
+        { "id": "stem_borer", "name": { "en": "Stem Borer", "hi": "तना छेदक", "te": "కాండం తొలుచు పురుగు" }, "type": "pest" }
+      ]
+    },
+    {
+      "id": "banana",
+      "name": { "en": "Banana", "hi": "केला (Banana)", "te": "అరటి (Banana)" },
+      "icon": "🍌",
+      "defaultSoil": "loamy",
+      "stages": ["vegetative", "flowering", "fruiting"],
+      "problems": [
+        { "id": "sigatoka_leaf_spot", "name": { "en": "Sigatoka Leaf Spot", "hi": "सिगाटोका पत्ती धब्बा", "te": "సిగటోకా ఆకుమచ్చ తెగులు" }, "type": "disease" },
+        { "id": "panama_wilt", "name": { "en": "Panama Wilt", "hi": "पनामा विल्ट (उकठा)", "te": "పనామా విల్ట్" }, "type": "disease" }
+      ]
+    },
+    {
+      "id": "mango",
+      "name": { "en": "Mango", "hi": "आम (Mango)", "te": "మామిడి (Mango)" },
+      "icon": "🥭",
+      "defaultSoil": "red",
+      "stages": ["flowering", "fruiting"],
+      "problems": [
+        { "id": "powdery_mildew", "name": { "en": "Powdery Mildew", "hi": "चूर्णी फफूंद (मंजर)", "te": "బూడిద తెగులు (పూత)" }, "type": "disease" },
+        { "id": "hopper", "name": { "en": "Mango Hopper", "hi": "आम का फुदका (Hopper)", "te": "తేనె మంచు పురుగు (హాప్పర్)" }, "type": "pest" }
+      ]
+    },
+    {
+      "id": "sugarcane",
+      "name": { "en": "Sugarcane", "hi": "गन्ना (Sugarcane)", "te": "చెరకు (Sugarcane)" },
+      "icon": "🎋",
+      "defaultSoil": "loamy",
+      "stages": ["seedling", "vegetative", "flowering", "fruiting"],
+      "problems": [
+        { "id": "early_shoot_borer", "name": { "en": "Early Shoot Borer", "hi": "तना बेधक (Shoot Borer)", "te": "కాండం తొలుచు పురుగు" }, "type": "pest" },
+        { "id": "red_rot", "name": { "en": "Red Rot Disease", "hi": "लाल सड़न (Red Rot)", "te": "ఎర్ర కుళ్ళు తెగులు" }, "type": "disease" },
+        { "id": "pyrilla", "name": { "en": "Pyrilla (Leafhopper)", "hi": "पायरीला (Pyrilla)", "te": "పైరిల్లా" }, "type": "pest" }
+      ]
+    }
+  ]
+}
