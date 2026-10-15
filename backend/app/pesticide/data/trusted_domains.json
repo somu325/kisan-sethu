@@ -1,0 +1,29 @@
+{
+  "description": "Allowlist of trusted Indian agricultural research and official government domains for pesticide dosage retrieval. Any domain not in this list MUST be strictly rejected.",
+  "allowed_domains": [
+    "icar.gov.in",
+    "crida.in",
+    "iihr.res.in",
+    "iari.res.in",
+    "cicr.org.in",
+    "angrau.ac.in",
+    "pjtsau.edu.in",
+    "tnau.ac.in",
+    "agritech.tnau.ac.in",
+    "uasbangalore.edu.in",
+    "uasd.edu",
+    "drysrhu.ap.gov.in",
+    "mpkv.ac.in",
+    "pdkv.ac.in",
+    "pau.edu",
+    "ccsuniv.ac.in",
+    "niphm.gov.in",
+    "cibrc.gov.in",
+    "agricoop.nic.in",
+    "agricoop.gov.in",
+    "ppqs.gov.in",
+    "plantwiseplusknowledgebank.org",
+    "cabi.org",
+    "kvk.icar.gov.in"
+  ]
+}

@@ -89,6 +89,69 @@ class LLMGateway:
             logger.error("LLM generation call failed: %s; falling back to offline generator.", exc)
             return self._generate_offline_fallback(prompt)
 
+    async def generate_structured(
+        self,
+        prompt: str,
+        response_schema: Any,
+        system_instruction: str | None = None,
+        temperature: float = 0.0,
+    ) -> str:
+        """Generate structured JSON conforming strictly to response_schema with temperature 0."""
+        model = self.model_fast
+        client = self._get_client()
+
+        if client is None:
+            return ""
+
+        try:
+            config: dict[str, Any] = {
+                "temperature": temperature,
+                "response_mime_type": "application/json",
+                "response_schema": response_schema,
+            }
+            if system_instruction:
+                config["system_instruction"] = system_instruction
+
+            response = client.models.generate_content(
+                model=model,
+                contents=prompt,
+                config=types.GenerateContentConfig(**config),
+            )
+            return str(response.text or "").strip()
+        except Exception as exc:
+            logger.error("Structured LLM generation failed: %s", exc)
+            return ""
+
+    async def analyze_image(
+        self,
+        prompt: str,
+        image_bytes: bytes,
+        mime_type: str = "image/jpeg",
+        system_instruction: str | None = None,
+    ) -> str:
+        """Analyze a leaf/plant image for visual disease/pest symptoms using Gemini Vision."""
+        model = self.model_fast
+        client = self._get_client()
+
+        if client is None:
+            return ""
+
+        try:
+            image_part = types.Part.from_bytes(data=image_bytes, mime_type=mime_type)
+            config: dict[str, Any] = {"temperature": 0.1}
+            if system_instruction:
+                config["system_instruction"] = system_instruction
+
+            response = client.models.generate_content(
+                model=model,
+                contents=[image_part, prompt],
+                config=types.GenerateContentConfig(**config),
+            )
+            return str(response.text or "").strip()
+        except Exception as exc:
+            logger.error("LLM image analysis call failed: %s", exc)
+            return ""
+
     @staticmethod
     def _generate_offline_fallback(prompt: str) -> str:
         """Generate a structured, fact-grounded response when running without active API keys."""

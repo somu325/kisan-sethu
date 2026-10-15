@@ -1,0 +1,175 @@
+{
+  "notice": "SAMPLE SANITY RANGE TABLE FOR ACTIVE INGREDIENTS AND FORMULATIONS - SOURCE: CIB&RC APPROVED LABELS & ICAR GUIDELINES. UPDATE ANNUALLY FROM PPQS REGISTER.",
+  "ranges": {
+    "thiamethoxam_25_wg": {
+      "active_ingredient": "thiamethoxam",
+      "formulation": "25% WG",
+      "min_dose_per_litre": 0.2,
+      "max_dose_per_litre": 0.5,
+      "unit_per_litre": "g",
+      "min_dose_per_acre": 40.0,
+      "max_dose_per_acre": 80.0,
+      "unit_per_acre": "g"
+    },
+    "chlorantraniliprole_18_5_sc": {
+      "active_ingredient": "chlorantraniliprole",
+      "formulation": "18.5% SC",
+      "min_dose_per_litre": 0.25,
+      "max_dose_per_litre": 0.4,
+      "unit_per_litre": "ml",
+      "min_dose_per_acre": 40.0,
+      "max_dose_per_acre": 60.0,
+      "unit_per_acre": "ml"
+    },
+    "emamectin_benzoate_5_sg": {
+      "active_ingredient": "emamectin benzoate",
+      "formulation": "5% SG",
+      "min_dose_per_litre": 0.4,
+      "max_dose_per_litre": 0.6,
+      "unit_per_litre": "g",
+      "min_dose_per_acre": 80.0,
+      "max_dose_per_acre": 100.0,
+      "unit_per_acre": "g"
+    },
+    "imidacloprid_17_8_sl": {
+      "active_ingredient": "imidacloprid",
+      "formulation": "17.8% SL",
+      "min_dose_per_litre": 0.25,
+      "max_dose_per_litre": 0.5,
+      "unit_per_litre": "ml",
+      "min_dose_per_acre": 40.0,
+      "max_dose_per_acre": 60.0,
+      "unit_per_acre": "ml"
+    },
+    "spinosad_45_sc": {
+      "active_ingredient": "spinosad",
+      "formulation": "45% SC",
+      "min_dose_per_litre": 0.25,
+      "max_dose_per_litre": 0.4,
+      "unit_per_litre": "ml",
+      "min_dose_per_acre": 50.0,
+      "max_dose_per_acre": 80.0,
+      "unit_per_acre": "ml"
+    },
+    "flonicamid_50_wg": {
+      "active_ingredient": "flonicamid",
+      "formulation": "50% WG",
+      "min_dose_per_litre": 0.3,
+      "max_dose_per_litre": 0.4,
+      "unit_per_litre": "g",
+      "min_dose_per_acre": 60.0,
+      "max_dose_per_acre": 80.0,
+      "unit_per_acre": "g"
+    },
+    "mancozeb_75_wp": {
+      "active_ingredient": "mancozeb",
+      "formulation": "75% WP",
+      "min_dose_per_litre": 2.0,
+      "max_dose_per_litre": 3.0,
+      "unit_per_litre": "g",
+      "min_dose_per_acre": 400.0,
+      "max_dose_per_acre": 600.0,
+      "unit_per_acre": "g"
+    },
+    "copper_oxychloride_50_wp": {
+      "active_ingredient": "copper oxychloride",
+      "formulation": "50% WP",
+      "min_dose_per_litre": 2.5,
+      "max_dose_per_litre": 3.0,
+      "unit_per_litre": "g",
+      "min_dose_per_acre": 500.0,
+      "max_dose_per_acre": 600.0,
+      "unit_per_acre": "g"
+    },
+    "propiconazole_25_ec": {
+      "active_ingredient": "propiconazole",
+      "formulation": "25% EC",
+      "min_dose_per_litre": 0.8,
+      "max_dose_per_litre": 1.2,
+      "unit_per_litre": "ml",
+      "min_dose_per_acre": 150.0,
+      "max_dose_per_acre": 200.0,
+      "unit_per_acre": "ml"
+    },
+    "hexaconazole_5_ec": {
+      "active_ingredient": "hexaconazole",
+      "formulation": "5% EC",
+      "min_dose_per_litre": 1.5,
+      "max_dose_per_litre": 2.0,
+      "unit_per_litre": "ml",
+      "min_dose_per_acre": 250.0,
+      "max_dose_per_acre": 350.0,
+      "unit_per_acre": "ml"
+    },
+    "cartap_hydrochloride_50_sp": {
+      "active_ingredient": "cartap hydrochloride",
+      "formulation": "50% SP",
+      "min_dose_per_litre": 1.5,
+      "max_dose_per_litre": 2.0,
+      "unit_per_litre": "g",
+      "min_dose_per_acre": 300.0,
+      "max_dose_per_acre": 400.0,
+      "unit_per_acre": "g"
+    },
+    "neem_oil_10000_ppm": {
+      "active_ingredient": "azadirachtin",
+      "formulation": "10000 PPM (1%)",
+      "min_dose_per_litre": 2.0,
+      "max_dose_per_litre": 3.0,
+      "unit_per_litre": "ml",
+      "min_dose_per_acre": 400.0,
+      "max_dose_per_acre": 600.0,
+      "unit_per_acre": "ml"
+    },
+    "neem_oil_1500_ppm": {
+      "active_ingredient": "azadirachtin",
+      "formulation": "1500 PPM (0.15%)",
+      "min_dose_per_litre": 4.0,
+      "max_dose_per_litre": 5.0,
+      "unit_per_litre": "ml",
+      "min_dose_per_acre": 800.0,
+      "max_dose_per_acre": 1000.0,
+      "unit_per_acre": "ml"
+    },
+    "nske_5_percent": {
+      "active_ingredient": "neem seed kernel extract",
+      "formulation": "5%",
+      "min_dose_per_litre": 45.0,
+      "max_dose_per_litre": 55.0,
+      "unit_per_litre": "g",
+      "min_dose_per_acre": 8000.0,
+      "max_dose_per_acre": 10000.0,
+      "unit_per_acre": "g"
+    },
+    "trichoderma_viride_1_wp": {
+      "active_ingredient": "trichoderma viride",
+      "formulation": "1% WP",
+      "min_dose_per_litre": 4.0,
+      "max_dose_per_litre": 5.0,
+      "unit_per_litre": "g",
+      "min_dose_per_acre": 800.0,
+      "max_dose_per_acre": 1000.0,
+      "unit_per_acre": "g"
+    },
+    "pseudomonas_fluorescens_1_wp": {
+      "active_ingredient": "pseudomonas fluorescens",
+      "formulation": "1% WP",
+      "min_dose_per_litre": 4.0,
+      "max_dose_per_litre": 5.0,
+      "unit_per_litre": "g",
+      "min_dose_per_acre": 800.0,
+      "max_dose_per_acre": 1000.0,
+      "unit_per_acre": "g"
+    },
+    "beauveria_bassiana_1_15_wp": {
+      "active_ingredient": "beauveria bassiana",
+      "formulation": "1.15% WP",
+      "min_dose_per_litre": 4.0,
+      "max_dose_per_litre": 5.0,
+      "unit_per_litre": "g",
+      "min_dose_per_acre": 800.0,
+      "max_dose_per_acre": 1000.0,
+      "unit_per_acre": "g"
+    }
+  }
+}
